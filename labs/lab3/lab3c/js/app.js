@@ -1,10 +1,10 @@
 //circles inside of circles
 function setup() {
-  createCanvas(300, 300);
+  createCanvas(400, 400);
   background(200);
-  for (var i = 36; i > 0; i--) {
+  for (var i = 50; i > 0; i--) {
     fill(255);
     stroke(50);
-    circle(150, 150, i * 8.33);
+    circle(200, 200, i * 4);
   }
 }
