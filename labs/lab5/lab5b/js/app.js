@@ -12,7 +12,7 @@ function setup() {
 function draw() {
   background(0);
   noStroke();
-  circle(circleX, circleY, 50);
+  circle(circleX, circleY, 25);
   circleX = circleX + xSpeed;
   circleY = circleY + ySpeed;
 
