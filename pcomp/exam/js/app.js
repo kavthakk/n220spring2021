@@ -25,6 +25,7 @@ function setup() {
 //in order to change color and radius as per mouseX. 
 function draw() {
   background(255);
+
   circles = {
     cirColor: [mouseX/4],
     xPos: 510,
@@ -64,6 +65,9 @@ function reset() {
   //similar thing here; how to actually make the function--well, function. 
 }
 
+if (mouseY > 1020 || mouseX > 1020) {
+  background(255);
+}
 
   }
 
