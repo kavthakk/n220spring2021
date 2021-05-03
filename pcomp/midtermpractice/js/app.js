@@ -170,8 +170,8 @@ tlObject = {
   }
   
   // for a more interactive version, uncomment one of the following lines
-  //mouseMoved =  
-  keyPressed = 
+  mouseMoved =  
+  //keyPressed = 
   function draw() {
     noStroke();
     //for distinct circle shapes, uncomment the next line
