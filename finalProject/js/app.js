@@ -1,16 +1,23 @@
 /* Concentration
 Create a version of the 'classic' game of memory (aka concentration). There should be a 4 x 4 grid of cards laid out face-down in front of the user. When clicked, reveal the face of a card. When a second card is tapped, reveal the face of that card as well. If the two cards match, remove them from the game. If they don’t, return them to face-down and allow the user to choose two more. */
 
+//first pile; to hold all cards at start
 let cards = [dv1, dv2, dv3, dv4, dv5, dv6, dv7, dv8, dv9, dv10, dv11, dv12, dv13, dv14, dv15, dv16];
+//loop to add listeners to each div
 for (let i = 0; i < cards.length; i++) {
   cards[i].addEventListener("click", doFlip);
 }
 
+//the second and third piles; to hold selected cards and removed cards
 let upCards = [];
+//this will help trigger when the replay button pops up
 let removedCards = [];
 
+//the main *event* where the magic happens
 function doFlip(event) {
+//sets a variable with the card attribute defined in HTML
   let faceUp = event.target.getAttribute("data-face");
+//sets the variable for the initial state of the card  
   let faceDown = "#909090";
   event.target.style.backgroundColor = faceUp; //after clicked, show color
   upCards.unshift(event.target); //put clicked card into array
@@ -25,22 +32,24 @@ function doFlip(event) {
     if (upCards[0].style.backgroundColor == upCards[1].style.backgroundColor) {
       //if the first two cards in the array have the same background color
       setTimeout(function () { //so it doesn't disappear without you knowing what happened
-        removedCards.unshift(upCards[0]);
+        removedCards.unshift(upCards[0]); //moves the matched cards from the 2nd pile to the 3rd
         removedCards.unshift(upCards[1]);
-        upCards[0].remove();
+        upCards[0].remove(); //and removes the matched cards from the 2nd pile to make room for the next cards
         upCards[1].remove();
       }, 500);
-      //then empty their elements
+
     } else {
       setTimeout(function () {
         event.target.style.backgroundColor = faceDown
       }, 2000);
-      //if not, flip them back down
+      //if not, flip them back down after 2 seconds
     }
   }
 
   //once all the cards are gone, show a message and a reset button
+  //this is the time for the 3rd pile to shine
   if (removedCards.length == 16) {
+      //the user has two options once the game is over
     let endMenu = confirm("Game over! Click 'ok' to play again, 'cancel' to close the tab.");
     if (endMenu == true) {
       //replay the game
@@ -51,6 +60,7 @@ function doFlip(event) {
     }
   }
 }
+//this is a failsafe replay button
 function replayGame() {
   location.reload();
 }
